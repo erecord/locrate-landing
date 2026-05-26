@@ -1,25 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { Box, QrCode, Search, Cloud, Share, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/hooks/use-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+const APP_STORE_URL = "https://apps.apple.com/uk/app/qr-box-organiser-locrate/id6746659418";
+const ANDROID_GROUP_URL = "https://groups.google.com/g/locrate";
+const ANDROID_STORE_URL = "https://play.google.com/store/apps/details?id=app.locrate.android";
+const ANDROID_BETA_URL = "https://play.google.com/apps/testing/app.locrate.android";
 
 const Home = () => {
   const [location] = useLocation();
-  const { toast } = useToast()
+  const [isAndroidDialogOpen, setIsAndroidDialogOpen] = useState(false);
 
   const handleStoreClick = (storeName: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-
-    if (storeName === "App Store") {
-      storeName = `the ${storeName}`;
+    if (storeName === "Google Play") {
+      setIsAndroidDialogOpen(true);
     }
-
-    toast({
-      title: "Coming Soon",
-      description: `We haven't launched on ${storeName} yet. Please check back soon.`,
-    });
   };
 
   useEffect(() => {
@@ -51,14 +57,17 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <Button
+                  asChild
                   size="lg"
                   variant="secondary"
                   className="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium"
-                  onClick={handleStoreClick("App Store")}
                 >
-                  <svg viewBox="0 0 384 512" width="16" height="16" className="mr-2" fill="currentColor">
-                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
-                  </svg> App Store
+                  <a href={APP_STORE_URL} target="_blank" rel="noreferrer">
+                    <svg viewBox="0 0 384 512" width="16" height="16" className="mr-2" fill="currentColor">
+                      <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+                    </svg>
+                    App Store
+                  </a>
                 </Button>
                 <Button
                   size="lg"
@@ -273,7 +282,9 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start ">
                 <a
-                  onClick={handleStoreClick("App Store")}
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noreferrer"
                   className="bg-black hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center cursor-pointer"
                 >
                   <svg viewBox="0 0 384 512" width="24" height="24" className="mr-3" fill="currentColor">
@@ -285,6 +296,7 @@ const Home = () => {
                   </div>
                 </a>
                 <a
+                  href={ANDROID_BETA_URL}
                   onClick={handleStoreClick("Google Play")}
                   className="bg-black hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center cursor-pointer"
                 >
@@ -320,6 +332,87 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <Dialog open={isAndroidDialogOpen} onOpenChange={setIsAndroidDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>How to join the Android closed beta</DialogTitle>
+            <DialogDescription>
+              The Android app is currently in closed beta. To get access, complete these two steps in order.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-5 text-sm text-gray-700">
+            <div className="grid grid-cols-[1.5rem_1fr] gap-3">
+              <div className="flex flex-col items-center">
+                <span className="mt-1 h-3 w-3 rounded-full bg-primary" />
+                <span className="mt-2 h-full w-px bg-primary/30" />
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">Step 1: join the testing group</p>
+                <a
+                  href={ANDROID_GROUP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-4 break-all"
+                >
+                  {ANDROID_GROUP_URL}
+                </a>
+              </div>
+            </div>
+            <div className="grid grid-cols-[1.5rem_1fr] gap-3">
+              <div className="flex flex-col items-center">
+                <span className="mt-1 h-3 w-3 rounded-full bg-primary" />
+                <span className="mt-2 h-full w-px bg-primary/30" />
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">Step 2: open the beta link</p>
+                <p className="mt-1 text-gray-600">
+                  After joining the group, use this link to enable beta access in Google Play.
+                </p>
+                <a
+                  href={ANDROID_BETA_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-block text-primary underline underline-offset-4 break-all"
+                >
+                  {ANDROID_BETA_URL}
+                </a>
+              </div>
+            </div>
+            <div className="grid grid-cols-[1.5rem_1fr] gap-3">
+              <div className="flex flex-col items-center">
+                <span className="mt-1 h-3 w-3 rounded-full bg-primary" />
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">After access is enabled: Play Store listing</p>
+                <p className="mt-1 text-gray-600">
+                  Use the normal app page only after beta access has been enabled on your account.
+                </p>
+                <a
+                  href={ANDROID_STORE_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-block text-primary underline underline-offset-4 break-all"
+                >
+                  {ANDROID_STORE_URL}
+                </a>
+              </div>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button asChild variant="outline">
+              <a href={ANDROID_GROUP_URL} target="_blank" rel="noreferrer">
+                Join Group First
+              </a>
+            </Button>
+            <Button asChild>
+              <a href={ANDROID_BETA_URL} target="_blank" rel="noreferrer">
+                Then Open Beta Link
+              </a>
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

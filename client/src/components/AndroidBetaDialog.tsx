@@ -86,7 +86,7 @@ const AndroidBetaDialog = ({ open, onOpenChange }: AndroidBetaDialogProps) => {
             </div>
           </div>
         </div>
-        <DialogFooter className="flex-col sm:flex-row">
+        <DialogFooter className="flex-col sm:flex-row gap-4">
           <Button asChild variant="outline">
             <a href={ANDROID_GROUP_URL} target="_blank" rel="noreferrer">
               Join Group First

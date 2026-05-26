@@ -1,0 +1,21 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appIDs": [
+                    "66XTQWD5X2.app.locrate.ios.dev",
+                    "66XTQWD5X2.app.locrate.ios.qa",
+                    "66XTQWD5X2.app.locrate.ios"
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": [
+            "66XTQWD5X2.app.locrate.ios.dev",
+            "66XTQWD5X2.app.locrate.ios.qa",
+            "66XTQWD5X2.app.locrate.ios"
+        ]
+    }
+}

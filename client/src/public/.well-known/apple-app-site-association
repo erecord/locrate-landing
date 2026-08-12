@@ -6,18 +6,6 @@
                 "appIDs": [
                     "66XTQWD5X2.app.locrate.ios"
                 ],
-                "paths": [
-                    "/authed",
-                    "/authed/dashboard",
-                    "/authed/dashboard/crates",
-                    "/authed/dashboard/scan",
-                    "/authed/dashboard/more",
-                    "/authed/view-crate/*",
-                    "/authed/locrate-crate/*",
-                    "/authed/submit-feedback",
-                    "/authed/tutorials",
-                    "/authed/achievements"
-                ],
                 "components": [
                     {
                         "/": "/authed"

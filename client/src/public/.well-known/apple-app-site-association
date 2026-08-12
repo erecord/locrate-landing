@@ -4,21 +4,50 @@
         "details": [
             {
                 "appIDs": [
-                    "66XTQWD5X2.app.locrate.ios.dev",
-                    "66XTQWD5X2.app.locrate.ios.qa",
                     "66XTQWD5X2.app.locrate.ios"
                 ],
                 "paths": [
-                    "NOT /admin/*",
-                    "/*"
+                    "/authed",
+                    "/authed/dashboard",
+                    "/authed/dashboard/crates",
+                    "/authed/dashboard/scan",
+                    "/authed/dashboard/more",
+                    "/authed/view-crate/*",
+                    "/authed/locrate-crate/*",
+                    "/authed/submit-feedback",
+                    "/authed/tutorials",
+                    "/authed/achievements"
                 ],
                 "components": [
                     {
-                        "/": "/admin/*",
-                        "exclude": true
+                        "/": "/authed"
                     },
                     {
-                        "/": "/*"
+                        "/": "/authed/dashboard"
+                    },
+                    {
+                        "/": "/authed/dashboard/crates"
+                    },
+                    {
+                        "/": "/authed/dashboard/scan"
+                    },
+                    {
+                        "/": "/authed/dashboard/more"
+                    },
+                    {
+                        "/": "/authed/view-crate/*"
+                    },
+                    {
+                        "/": "/authed/locrate-crate/*"
+                    },
+                    {
+                        "/": "/authed/submit-feedback"
+                    },
+                    {
+                        "/": "/authed/tutorials"
+                    },
+                    {
+                        "/": "/authed/achievements"
                     }
                 ]
             }
@@ -26,8 +55,6 @@
     },
     "webcredentials": {
         "apps": [
-            "66XTQWD5X2.app.locrate.ios.dev",
-            "66XTQWD5X2.app.locrate.ios.qa",
             "66XTQWD5X2.app.locrate.ios"
         ]
     }

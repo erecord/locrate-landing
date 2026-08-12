@@ -4,17 +4,45 @@
         "details": [
             {
                 "appIDs": [
-                    "66XTQWD5X2.app.locrate.ios.dev",
-                    "66XTQWD5X2.app.locrate.ios.qa",
                     "66XTQWD5X2.app.locrate.ios"
+                ],
+                "components": [
+                    {
+                        "/": "/authed"
+                    },
+                    {
+                        "/": "/authed/dashboard"
+                    },
+                    {
+                        "/": "/authed/dashboard/crates"
+                    },
+                    {
+                        "/": "/authed/dashboard/scan"
+                    },
+                    {
+                        "/": "/authed/dashboard/more"
+                    },
+                    {
+                        "/": "/authed/view-crate/*"
+                    },
+                    {
+                        "/": "/authed/locrate-crate/*"
+                    },
+                    {
+                        "/": "/authed/submit-feedback"
+                    },
+                    {
+                        "/": "/authed/tutorials"
+                    },
+                    {
+                        "/": "/authed/achievements"
+                    }
                 ]
             }
         ]
     },
     "webcredentials": {
         "apps": [
-            "66XTQWD5X2.app.locrate.ios.dev",
-            "66XTQWD5X2.app.locrate.ios.qa",
             "66XTQWD5X2.app.locrate.ios"
         ]
     }

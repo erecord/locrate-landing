@@ -26,7 +26,7 @@
                         "/": "/authed/view-crate/*"
                     },
                     {
-                        "/": "/authed/locrate-crate/*"
+                        "/": "/authed/locate-crate/*"
                     },
                     {
                         "/": "/authed/submit-feedback"

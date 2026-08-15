@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { Box, QrCode, Search, Cloud, Share, Bell } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import AppScreenshotCard from "@/components/AppScreenshotCard";
 import AndroidBetaDialog from "@/components/AndroidBetaDialog";
 import StoreButtons from "@/components/StoreButtons";
 
@@ -33,36 +34,44 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" className="bg-primary text-white py-16 md:py-24">
+      <section id="hero" className="bg-[#2D92D2] text-white py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center">
-            <div className="lg:w-1/2 mb-10 lg:mb-0 order-2 lg:order-1">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Never lose track of your belongings again</h1>
+            <div className="lg:w-1/2 mb-10 lg:mb-0 order-3 lg:order-1">
+              <h1 className="mb-4 text-4xl font-bold leading-none md:text-5xl lg:text-6xl">
+                <span className="block text-[#081B34]">Know what you have.</span>
+                <span className="mt-2 block text-white">Find where it is.</span>
+              </h1>
               <p className="text-lg md:text-xl mb-8 text-gray-100">
-                Locrate helps you organise your possessions with virtual boxes and QR codes, making finding them as simple as scanning with your mobile phone.
+                Locrate helps you keep track of everything, so you can find what you need, fast.
               </p>
-              <StoreButtons onAndroidClick={handleAndroidClick} />
+              <div className="hidden lg:block">
+                <StoreButtons onAndroidClick={handleAndroidClick} />
+              </div>
             </div>
 
             <div className="lg:w-1/2 order-1 lg:order-2 ">
               <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-6 justify-center items-center">
                 <div className="w-full flex justify-center">
                   <img
-                    src="images/app-crates.jpg"
-                    alt="Locrate App Home Page"
+                    src="images/screenshots/organise-storage-header.jpg"
+                    alt="Locrate organise storage screen"
                     className="rounded-xl w-full h-auto max-w-sm"
                   />
                 </div>
               </div>
 
             </div>
+            <div className="mb-8 w-full order-2 lg:hidden">
+              <StoreButtons onAndroidClick={handleAndroidClick} />
+            </div>
             <div className="lg:w-1/2 hidden lg:block order-3 ">
               <div className=" flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-6 justify-center items-center">
 
                 <div className="w-full flex justify-center">
                   <img
-                    src="images/app-print-qr.jpg"
-                    alt="Locrate Print QR Code Example"
+                    src="images/screenshots/print-to-label-printers-header.jpg"
+                    alt="Printing Locrate QR labels on a label printer"
                     className="rounded-xl w-full h-auto max-w-sm"
                   />
                 </div>
@@ -245,21 +254,25 @@ const Home = () => {
               <StoreButtons onAndroidClick={handleAndroidClick} variant="download" />
             </div>
             <div className="lg:w-1/2">
-              <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-                <img
-                  src="images/app-search.jpg"
-                  alt="Locrate app scanning QR code"
-                  className="rounded-xl shadow-lg w-3/4 lg:w-1/2 h-auto max-w-sm"
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <AppScreenshotCard
+                  src="images/screenshots/view-crate-page.png"
+                  alt="Locrate crate contents view"
+                  statusBarColor="#2D92D2"
+                  cropTop={10}
                 />
-                <img
-                  src="images/app-locate.jpg"
-                  alt="Locrate app search"
-                  className="rounded-xl shadow-lg w-3/4 lg:w-1/2 h-auto max-w-sm"
+                <AppScreenshotCard
+                  src="images/screenshots/locate-success.png"
+                  alt="Locrate locate crate success screen"
+                  statusBarColor="#2D92D2"
+                  cropTop={10}
                 />
-                <img
-                  src="images/app-scan-qr.jpg"
-                  alt="Locrate app search"
-                  className="rounded-xl shadow-lg w-3/4 lg:w-1/2 h-auto max-w-sm"
+                <AppScreenshotCard
+                  src="images/screenshots/change location bottom sheet.jpeg"
+                  alt="Locrate change location screen"
+                  statusBarColor="#1F4C68"
+                  cropTop={8}
+                  className="sm:col-span-2 lg:col-span-1"
                 />
               </div>
             </div>

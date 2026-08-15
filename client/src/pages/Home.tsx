@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { Box, QrCode, Search, Cloud, Share, Bell } from "lucide-react";
+import { Box, QrCode, Search, Cloud, Share, Bell, Camera, MapPinned, Tags, Printer } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import AppScreenshotCard from "@/components/AppScreenshotCard";
 import AndroidBetaDialog from "@/components/AndroidBetaDialog";
@@ -11,58 +11,93 @@ const features = [
     icon: Box,
     title: "Virtual Boxes",
     description:
-      "Create digital containers for your physical items. Organise and categorise your belongings into intuitive virtual boxes.",
+      "Build a home inventory for boxes, tubs and shelves so you can see what you own in one place.",
+    status: "Available now",
+  },
+  {
+    icon: Camera,
+    title: "One photo. Many items added.",
+    description:
+      "Take one photo of an open box and let Locrate detect, crop and add multiple items in one go.",
     status: "Available now",
   },
   {
     icon: QrCode,
     title: "QR Code Tracking",
     description:
-      "Generate unique QR codes for your boxes and items. Simply scan them with your phone to instantly locate and identify.",
+      "Print QR labels for storage boxes so you can scan a crate and check contents before opening it.",
     status: "Available now",
   },
   {
     icon: Search,
     title: "Smart Search",
-    description: "Quickly find any item in any box with our powerful search function.",
+    description: "Search stored items by name or browse through what you have when you only remember part of it.",
     status: "Available now",
   },
   {
-    icon: Share,
+    icon: MapPinned,
     title: "Locations",
-    description: "Separate the house, loft, garage or storage unit so you can browse the right place before you start opening boxes.",
+    description: "Keep crates tied to real places like the house, loft, garage or storage unit so you always know where things are.",
     status: "Available now",
   },
   {
-    icon: QrCode,
+    icon: Tags,
     title: "Categories",
-    description: "Group crates into categories like Christmas, craft supplies or home office to keep large collections easier to scan.",
+    description: "Browse boxes by category like tools, Christmas or home office as your storage grows.",
     status: "Available now",
   },
   {
     icon: Cloud,
     title: "Cloud Sync",
-    description: "Access your inventory from any device. Your data is securely stored in the cloud and synced across all your devices.",
+    description: "Keep your storage inventory on your phone whenever you need to check a crate.",
     status: "Available now",
   },
   {
-    icon: Bell,
+    icon: Printer,
     title: "Thermal Printer Support",
-    description: "Print QR labels straight to supported thermal printers so crates can be labelled as soon as you create them.",
+    description: "Print QR labels straight to supported thermal printers while you are packing, moving or reorganising.",
     status: "Available now",
   },
   {
     icon: Share,
     title: "Shared Access",
-    description: "Share specific boxes with family or roommates. Perfect for household items, shared collections, and more.",
+    description: "Share specific boxes with family or roommates for household storage and shared collections.",
     status: "Coming soon",
   },
   {
     icon: Bell,
     title: "Many More Features",
     description:
-      "Stay tuned for new features including multiple inventories, advanced filtering, smart labels, and much more to come.",
+      "More features are on the way, including multiple inventories, smarter filtering and better sharing controls.",
     status: "Coming soon",
+  },
+];
+
+const workflowSteps = [
+  {
+    step: "01",
+    title: "Snap the box once.",
+    description: "Take one photo of the box, drawer or shelf to start your crate.",
+  },
+  {
+    step: "02",
+    title: "Confirm what was found.",
+    description: "Review the detected items, adjust quick crops, and save what matters.",
+  },
+  {
+    step: "03",
+    title: "Label and store it.",
+    description: "Add a location and category, then print or apply the QR label before it goes into storage.",
+  },
+  {
+    step: "04",
+    title: "Search for the item later.",
+    description: "When you need something back, search the item name and retrieve the right crate.",
+  },
+  {
+    step: "05",
+    title: "Scan before you open it.",
+    description: "Scan the printed QR code to check contents or confirm you have the exact box in front of you.",
   },
 ];
 
@@ -145,9 +180,9 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-14 max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary">Why People Use Locrate</p>
-            <h2 className="mb-5 text-3xl font-bold md:text-4xl">Features that simplify your life</h2>
+            <h2 className="mb-5 text-3xl font-bold md:text-4xl">What You Can Do</h2>
             <p className="mx-auto max-w-2xl text-lg leading-8 text-gray-600">
-              Discover how Locrate makes organising and finding your items easier to browse, search and recover later.
+              Know what you have, where it is, and browse through storage without opening every box to check.
             </p>
           </div>
 
@@ -186,77 +221,31 @@ const Home = () => {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 bg-gray-100">
+      <section id="how-it-works" className="bg-white py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How Locrate Works</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Three simple steps to transform how you organise your possessions.
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary">How It Works</p>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Pack it once. Find it later.</h2>
+            <p className="mx-auto max-w-2xl text-lg leading-8 text-gray-600">
+              Add multiple items from one photo, store them by location, then browse, search and scan the right box later.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Step 1 */}
-            <div className="bg-white rounded-xl shadow-lg p-8 transform transition-transform duration-300 hover:scale-105">
-              <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl mb-6 mx-auto">
-                <span className="font-bold">1</span>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+            {workflowSteps.map((item) => (
+              <div
+                key={item.step}
+                className="rounded-2xl border border-slate-200 bg-[#F8FBFD] p-7 shadow-[0_10px_30px_rgba(8,27,52,0.05)]"
+              >
+                <div className="mb-5">
+                  <span className="inline-flex rounded-full bg-[#EAF6FF] px-3 py-1 text-sm font-semibold tracking-[0.12em] text-primary">
+                    {item.step}
+                  </span>
+                </div>
+                <h3 className="mb-3 text-2xl font-semibold tracking-[-0.02em] text-slate-950">{item.title}</h3>
+                <p className="text-base leading-7 text-gray-600">{item.description}</p>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-center">Create Virtual Boxes</h3>
-              <p className="text-gray-600">
-                Effortlessly set up digital containers that mirror your physical storage. These are called your crates. Give them custom names, and organise by location or purpose.
-              </p>
-              <div className="mt-4 text-primary font-medium">
-                Perfect for: Lofts, garages, storage units, wardrobes, etc.
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className="bg-white rounded-xl shadow-lg p-8 transform transition-transform duration-300 hover:scale-105">
-              <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl mb-6 mx-auto">
-                <span className="font-bold">2</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-center">Apply QR Stickers</h3>
-              <p className="text-gray-600">
-                Print your personalised QR code stickers and affix them to your physical boxes or storage containers. Each QR code links to an individual crate.
-              </p>
-              <br />
-              <div className="mt-4 text-primary font-medium">
-                Benefit: No more opening multiple boxes to find what you need
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="bg-white rounded-xl shadow-lg p-8 transform transition-transform duration-300 hover:scale-105">
-              <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl mb-6 mx-auto">
-                <span className="font-bold">3</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-center">Scan & Find</h3>
-              <p className="text-gray-600">
-                When you need something, simply scan the QR code with your mobile camera to instantly view the contents, or use our powerful search feature to locate any item across all boxes.
-              </p>
-              <div className="mt-4 text-primary font-medium">
-                Save time: Locate items in seconds, not minutes or hours
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <a
-              href="#download"
-              className="bg-primary hover:bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-medium inline-block"
-              onClick={(e) => {
-                e.preventDefault();
-                const element = document.getElementById("download");
-                if (element) {
-                  window.scrollTo({
-                    top: element.offsetTop - 80,
-                    behavior: "smooth",
-                  });
-                }
-              }}
-            >
-              Get Started Now
-            </a>
+            ))}
           </div>
         </div>
       </section>

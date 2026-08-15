@@ -38,11 +38,11 @@ const AppScreenshotCard = ({
               }}
             />
           <div
-            className="absolute inset-x-0 top-0 h-[calc(clamp(1.9rem,15cqw,2.8rem)+var(--top-inset)*100cqw/240)] lg:h-[calc(clamp(1.45rem,11.5cqw,2rem)+var(--top-inset)*100cqw/240)]"
+            className="absolute inset-x-0 top-0 h-[calc(clamp(2.2rem,17.5cqw,3.15rem)+var(--top-inset)*100cqw/240)] lg:h-[calc(clamp(1.45rem,11.5cqw,2rem)+var(--top-inset)*100cqw/240)]"
             style={{ backgroundColor: statusBarColor }}
           />
           <div
-            className="absolute inset-x-0 top-[calc(clamp(1.9rem,15cqw,2.8rem)+var(--top-inset)*100cqw/240)] h-[clamp(0.55rem,5.2cqw,1rem)] lg:top-[calc(clamp(1.45rem,11.5cqw,2rem)+var(--top-inset)*100cqw/240)] lg:h-[clamp(0.3rem,3.2cqw,0.6rem)]"
+            className="absolute inset-x-0 top-[calc(clamp(2.2rem,17.5cqw,3.15rem)+var(--top-inset)*100cqw/240)] h-[clamp(0.75rem,6.5cqw,1.2rem)] lg:top-[calc(clamp(1.45rem,11.5cqw,2rem)+var(--top-inset)*100cqw/240)] lg:h-[clamp(0.3rem,3.2cqw,0.6rem)]"
             style={{ background: `linear-gradient(to bottom, ${statusBarColor}, rgba(255,255,255,0))` }}
           />
           <div className="absolute left-[clamp(0.7rem,5.4cqw,0.9rem)] top-[calc(clamp(0.42rem,3.2cqw,0.62rem)+var(--top-inset)*50cqw/240)] text-[clamp(0.6rem,4.2cqw,0.76rem)] font-semibold tracking-[-0.02em] text-white lg:top-[calc(clamp(0.32rem,2.6cqw,0.52rem)+var(--top-inset)*50cqw/240)]">

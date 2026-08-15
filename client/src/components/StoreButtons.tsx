@@ -42,7 +42,7 @@ const StoreButtons = ({ onAndroidClick, variant = "hero" }: StoreButtonsProps) =
   }
 
   return (
-    <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+    <div className="flex flex-col space-y-4 lg:flex-row lg:space-x-4 lg:space-y-0">
       <Button
         asChild
         size="lg"

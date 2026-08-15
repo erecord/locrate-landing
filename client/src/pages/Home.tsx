@@ -56,7 +56,7 @@ const Home = () => {
                   <img
                     src="images/screenshots/organise-storage-header.jpg"
                     alt="Locrate organise storage screen"
-                    className="rounded-xl w-full h-auto max-w-sm"
+                    className="h-auto w-full max-w-md rounded-xl lg:max-w-xl xl:max-w-2xl"
                   />
                 </div>
               </div>
@@ -72,7 +72,7 @@ const Home = () => {
                   <img
                     src="images/screenshots/print-to-label-printers-header.jpg"
                     alt="Printing Locrate QR labels on a label printer"
-                    className="rounded-xl w-full h-auto max-w-sm"
+                    className="h-auto w-full max-w-md rounded-xl lg:max-w-xl xl:max-w-2xl"
                   />
                 </div>
               </div></div>
@@ -253,26 +253,28 @@ const Home = () => {
               </p>
               <StoreButtons onAndroidClick={handleAndroidClick} variant="download" />
             </div>
-            <div className="lg:w-1/2">
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="order-2 mt-10 w-full lg:mt-0 lg:w-1/2">
+              <div className="grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-3">
                 <AppScreenshotCard
                   src="images/screenshots/view-crate-page.png"
                   alt="Locrate crate contents view"
                   statusBarColor="#2D92D2"
                   cropTop={10}
-                />
-                <AppScreenshotCard
-                  src="images/screenshots/locate-success.png"
-                  alt="Locrate locate crate success screen"
-                  statusBarColor="#2D92D2"
-                  cropTop={10}
+                  topInset={10}
                 />
                 <AppScreenshotCard
                   src="images/screenshots/change location bottom sheet.jpeg"
                   alt="Locrate change location screen"
                   statusBarColor="#1F4C68"
                   cropTop={8}
-                  className="sm:col-span-2 lg:col-span-1"
+                  topInset={0}
+                />
+                <AppScreenshotCard
+                  src="images/screenshots/locate-success.png"
+                  alt="Locrate locate crate success screen"
+                  statusBarColor="#2D92D2"
+                  cropTop={10}
+                  topInset={24}
                 />
               </div>
             </div>

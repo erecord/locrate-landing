@@ -6,6 +6,66 @@ import AppScreenshotCard from "@/components/AppScreenshotCard";
 import AndroidBetaDialog from "@/components/AndroidBetaDialog";
 import StoreButtons from "@/components/StoreButtons";
 
+const features = [
+  {
+    icon: Box,
+    title: "Virtual Boxes",
+    description:
+      "Create digital containers for your physical items. Organise and categorise your belongings into intuitive virtual boxes.",
+    status: "Available now",
+  },
+  {
+    icon: QrCode,
+    title: "QR Code Tracking",
+    description:
+      "Generate unique QR codes for your boxes and items. Simply scan them with your phone to instantly locate and identify.",
+    status: "Available now",
+  },
+  {
+    icon: Search,
+    title: "Smart Search",
+    description: "Quickly find any item in any box with our powerful search function.",
+    status: "Available now",
+  },
+  {
+    icon: Share,
+    title: "Locations",
+    description: "Separate the house, loft, garage or storage unit so you can browse the right place before you start opening boxes.",
+    status: "Available now",
+  },
+  {
+    icon: QrCode,
+    title: "Categories",
+    description: "Group crates into categories like Christmas, craft supplies or home office to keep large collections easier to scan.",
+    status: "Available now",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Sync",
+    description: "Access your inventory from any device. Your data is securely stored in the cloud and synced across all your devices.",
+    status: "Available now",
+  },
+  {
+    icon: Bell,
+    title: "Thermal Printer Support",
+    description: "Print QR labels straight to supported thermal printers so crates can be labelled as soon as you create them.",
+    status: "Available now",
+  },
+  {
+    icon: Share,
+    title: "Shared Access",
+    description: "Share specific boxes with family or roommates. Perfect for household items, shared collections, and more.",
+    status: "Coming soon",
+  },
+  {
+    icon: Bell,
+    title: "Many More Features",
+    description:
+      "Stay tuned for new features including multiple inventories, advanced filtering, smart labels, and much more to come.",
+    status: "Coming soon",
+  },
+];
+
 const Home = () => {
   const [location] = useLocation();
   const [isAndroidDialogOpen, setIsAndroidDialogOpen] = useState(false);
@@ -81,87 +141,46 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20">
+      <section id="features" className="bg-[#F8FBFD] py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Features that simplify your life</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover how Locrate makes organising and finding your items easier than ever before.
+          <div className="mx-auto mb-14 max-w-3xl text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary">Why People Use Locrate</p>
+            <h2 className="mb-5 text-3xl font-bold md:text-4xl">Features that simplify your life</h2>
+            <p className="mx-auto max-w-2xl text-lg leading-8 text-gray-600">
+              Discover how Locrate makes organising and finding your items easier to browse, search and recover later.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-white dark:bg-dark rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300">
-              <div className="text-primary text-3xl mb-4">
-                <Box className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Virtual Boxes</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Create digital containers for your physical items. Organise and categorise your belongings into intuitive virtual boxes.
-              </p>
-            </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => {
+              const Icon = feature.icon;
+              const isPlanned = feature.status === "Coming soon";
 
-            {/* Feature 2 */}
-            <div className="bg-white dark:bg-dark rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300">
-              <div className="text-primary text-3xl mb-4">
-                <QrCode className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">QR Code Tracking</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Generate unique QR codes for your boxes and items. Simply scan them with your phone to instantly locate and identify.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-white dark:bg-dark rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300">
-              <div className="text-primary text-3xl mb-4">
-                <Search className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Smart Search</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Quickly find any item in any box with our powerful search function.
-              </p>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="bg-white dark:bg-dark rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300">
-              <div className="text-primary text-3xl mb-4">
-                <Cloud className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Cloud Sync</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Access your inventory from any device. Your data is securely stored in the cloud and synced across all your devices.
-              </p>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="bg-white dark:bg-dark rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300 relative overflow-hidden">
-              <div className="absolute -right-9 top-7 rotate-[45deg]">
-                <Badge variant="secondary" className="text-white text-md px-8 py-1 shadow-lg">Coming Soon</Badge>
-              </div>
-              <div className="text-primary text-3xl mb-4">
-                <Share className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Shared Access</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Share specific boxes with family or roommates. Perfect for household items, shared collections, and more.
-              </p>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="bg-white dark:bg-dark rounded-xl shadow-md p-6 hover:shadow-lg transition duration-300 relative overflow-hidden">
-              <div className="absolute -right-9 top-7 rotate-[45deg]">
-                <Badge variant="secondary" className="text-white text-md px-8 py-1 shadow-lg">Coming Soon</Badge>
-              </div>
-              <div className="text-primary text-3xl mb-4">
-                <Bell className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Many More Features</h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Stay tuned for new features including multiple inventories, advanced filtering, smart labels, and much more to come.
-              </p>
-            </div>
+              return (
+                <div
+                  key={feature.title}
+                  className={`rounded-2xl border p-6 transition duration-200 ${
+                    isPlanned
+                      ? "border-[#E7D3C2] bg-[#FFF8F4]"
+                      : "border-slate-200 bg-white shadow-[0_10px_30px_rgba(8,27,52,0.06)] hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(8,27,52,0.10)]"
+                  }`}
+                >
+                  <div className="mb-5 flex items-start justify-between gap-4">
+                    <div className={`rounded-2xl p-3 ${isPlanned ? "bg-white" : "bg-[#EFF7FD]"}`}>
+                      <Icon className="h-7 w-7 text-primary" />
+                    </div>
+                    <Badge
+                      variant="secondary"
+                      className={isPlanned ? "bg-[#E2A477] text-white" : "bg-[#EAF6FF] text-primary hover:bg-[#EAF6FF]"}
+                    >
+                      {feature.status}
+                    </Badge>
+                  </div>
+                  <h3 className="mb-3 text-2xl font-semibold tracking-[-0.02em] text-slate-950">{feature.title}</h3>
+                  <p className="text-base leading-8 text-gray-600">{feature.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
